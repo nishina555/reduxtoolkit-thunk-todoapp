@@ -48,39 +48,7 @@ const initialState: TodoState = {
 const todosSlice = createSlice({
   name: "todos",
   initialState,
-  reducers: {
-    addTodo(state, action) {
-      const { id, input } = action.payload;
-      return {
-        todoItems: [
-          ...state.todoItems,
-          {
-            id,
-            content: input,
-            completed: false,
-          },
-        ],
-      };
-    },
-    toggleTodo(state, action) {
-      const id = action.payload;
-      const todoItems = state.todoItems.map((todo, index) => {
-        if (index === id - 1) {
-          return Object.assign({}, todo, { completed: !todo.completed });
-        } else {
-          return todo;
-        }
-      });
-      return {
-        todoItems: todoItems,
-      };
-    },
-    setTodos(state, action) {
-      return {
-        todoItems: action.payload,
-      };
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchAllTodos.fulfilled, (state, action) => {
       state.todoItems = action.payload.todos;
@@ -109,5 +77,4 @@ const todosSlice = createSlice({
   },
 });
 
-export const { addTodo, toggleTodo, setTodos } = todosSlice.actions;
 export default todosSlice.reducer;
