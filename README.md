@@ -1,44 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+Redux Thunkを利用して非同期通信を実装したサンプルアプリケーションです。
+外部APIから取得したTodoリストを表示・更新できるTodoリストです。
 
-## Available Scripts
+Reduxt ToolkitのAPI(createSlice, createAsyncThunk)を利用して実装しています。
 
-In the project directory, you can run:
+ThunkActionを利用した実装については[nishina555/redux-thunk-todoapp](https://github.com/nishina555/redux-thunk-todoapp)で別途公開しております。
 
-### `yarn start`
+React Reduxの公式ドキュメント内で紹介されている[Basic Tutorial](https://react-redux.js.org/introduction/basic-tutorial)のTodoアプリがベースとなっています。
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<kbd><img width="268" alt="スクリーンショット 2021-02-14 14 13 12" src="https://user-images.githubusercontent.com/3121046/109912319-27b2f680-7cef-11eb-99f1-36c52895ddcd.png"></kbd>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `yarn test`
+## 実行方法
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### APIサーバーの用意
 
-### `yarn build`
+```
+// todos.json
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+{
+  "todos": [
+    {
+      "id": 1,
+      "content": "do something",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "content": "go somewhere",
+      "completed": false
+    }
+  ]
+}
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```
+### json-serverのインストール
+$ yarn add json-server
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### port4000でJSON Serverを起動し、todos.jsonが取得できるようにする
+$ json-server todos.json --port 4000
+```
 
-### `yarn eject`
+### 起動
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+$ yarn start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This is a Todo App written in TypeScript for studying Redux Thunk.
+The app is based on the one introduced to [React Redux tutorial]((https://react-redux.js.org/introduction/basic-tutorial)).
